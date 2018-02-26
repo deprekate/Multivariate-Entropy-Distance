@@ -1,0 +1,10 @@
+#!/bin/bash
+cd MED2
+make clean
+cd ..
+cd TISModel
+make clean
+cd ..
+cd bin
+rm -f MED2 TISModel
+cd ..

@@ -1,0 +1,12 @@
+#!/bin/bash
+cd MED2
+make
+cp MED2 ../bin
+cd ..
+cd TISModel
+make
+cp TISModel ../bin
+cd ..
+cd bin
+chmod a+x MED2 TISModel
+cd ..
