@@ -2,7 +2,9 @@
 A new non-supervised gene prediction algorithm for bacterial and archaeal genomes
 
 Script file to install the program:
+```sh
  build
+```
 
 All resultant exactuable files are generated in the package "bin"
 
