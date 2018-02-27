@@ -1,9 +1,10 @@
+#include "SequenceTransform.h"
+#include <ctype.h>
 
-#include"SequenceTransform.h"
 	
 char SequenceTransform_T::char2digital( char res )
 {
-	switch( res)
+	switch( toupper(res) )
 	{
 	case 'A' : return '0';
 	case 'C' : return '1';

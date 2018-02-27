@@ -1,6 +1,6 @@
 MED2 : GeneInfo.o GeneSeq.o MED_start.o MainProcess.o \
 	OftenUsedOperatLib.o SequenceTransform.o med.o
-	g++ -v -o MED2 GeneInfo.o GeneSeq.o MED_start.o MainProcess.o \
+	g++ -o MED2 GeneInfo.o GeneSeq.o MED_start.o MainProcess.o \
 	OftenUsedOperatLib.o SequenceTransform.o med.o
 	
 GeneInfo.o : GeneInfo.cpp GeneInfo.h

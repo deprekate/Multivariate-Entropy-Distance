@@ -103,8 +103,7 @@ Pa_I_I GeneInfo_T::getNextPhaseORF( const char* seq, int hint )
 
 int GeneInfo_T::getNextTISPosition( const char* seq, int hint )
 {
-	assert( seqLen != 0);
-	//assert( seqLen != 0&&"测试序列的长度未初始化seqLen静态变量");
+	assert( seqLen != 0 && "The length of the test sequence is not initialized seqLen static variables");
 	for( ; ; hint += 1 )
 	{
 		if( hint > seqLen - 3 )

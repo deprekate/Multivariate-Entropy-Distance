@@ -24,7 +24,7 @@ MED::MED( Str& seq )
 
 std::vector<ORF_T> MED::getGeneLocation()
 {
-	assert( seq == NULL && "未更新序列,请重新生成MED对象" );
+	assert( seq == NULL && "No update sequence, please rebuild MED object" );
 	if( isGCRich )
 		readCenters( "EDPCentersGC.txt" );
 	else{

@@ -1,4 +1,6 @@
-#include"SequenceTransform.h"
+#include "SequenceTransform.h"
+#include <ctype.h>
+
 Str genomeID;
 Str SequenceTransform_T::char2DigitalSeq( Str& seq )
 {
@@ -49,7 +51,7 @@ void SequenceTransform_T::char2DigitalSeqFile( Str& in, Str& out)
 	
 char SequenceTransform_T::char2digital( char res )
 {
-	switch( res)
+	switch( toupper(res) )
 	{
 	case 'A' : return '0';
 	case 'C' : return '1';

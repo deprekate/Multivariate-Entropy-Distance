@@ -1,9 +1,9 @@
 #ifndef MAXTRIX_H
 #define MAXTRIX_H
 
-#include<iomanip>
-#include"TypeDefBase.h"
-#include<vector>
+#include <iomanip>
+#include "TypeDefBase.h"
+#include <vector>
 #include <math.h>
 				
 template<class Type_T>
