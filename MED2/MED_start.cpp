@@ -90,6 +90,10 @@ void MED_start::kerneWordsDistriAndWM( int mutNum )
 		SigWM.push_back( result.second );
 		spacerLenDistri.push_back( result.first );
 	}
+	if(spacerLenDistri.size() < 1){
+		printf("No root ORFs found\n");
+		exit (EXIT_FAILURE);
+	}
 	int iter = 0;
 	for(; iter < spacerLenDistri[0].size(); ++iter )
 	{

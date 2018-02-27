@@ -1,5 +1,5 @@
-#include"MED.h"
-#include"SequenceTransform.h"
+#include "MED.h"
+#include "SequenceTransform.h"
 
 //write predicted CDS to files.
 void resultToFile( std::vector<ORF_T>& result, Str& resultFilename );
@@ -22,7 +22,7 @@ int main( int argc, char* args[]
 		return 1;
 	}
 
-	cout<<"Wellcome to MED2.0"<<endl;
+	cout<<"Welcome to MED2.0"<<endl;
 	cout<<"Genome file is "<<args[1]<<endl;
 	Ve_Str genomes;
 	parafile = Str( "out.para" );
@@ -46,8 +46,7 @@ int main( int argc, char* args[]
 	else
 		processOverlapping( rstFile );
 	//Call TIS model to revise starts annotation
-	system( Str("./TISModel \"" 
-		+Str(args[1]) + "\" \""+ rstFile+"\"").data() );
+	system( Str("./TISModel \"" +Str(args[1]) + "\" \""+ rstFile+"\"").data() );
 	return 1;
 }
 
