@@ -5,6 +5,7 @@
 #include "TypeDefBase.h"
 #include <vector>
 #include <math.h>
+#include <execinfo.h>
 
 template<class Type_T> class Matrix_T;
 template<class Type_T> Matrix_T<Type_T> operator-(Matrix_T<Type_T>& lMatrix,Matrix_T<Type_T>& rMatrix);	

@@ -32,8 +32,7 @@ std::vector<ORF_T> MED::getGeneLocation()
 	}
 	std::list<ORF_T> ORFSet;
 	getORFSet( ORFSet );
-	cout<<"Number of exactcted ORFs: "
-		<<ORFSet.size()<<endl;
+	cout<<"Number of exactcted ORFs: "	<<ORFSet.size()<<endl;
 	decorateInitPoint( ORFSet );
 	return identifyGeneLocation( ORFSet );
 } 
@@ -59,6 +58,13 @@ void MED::getORFSet( std::list<ORF_T>& ORFSet )
 			( ORF.location.second, ORF.location.first, ORF.location.second );
 		ORF.ORFLength = fabs( ORF.location.second - ORF.location.first );
 		ORFSet.push_back( ORF );
+		/*
+		if(ORF.isPositive){
+			fprintf(stderr, "%i\t%i\n", ORF.location.first+1, ORF.location.second+3); 
+		}else{
+			fprintf(stderr, "%i\t%i\n", geneInfo.seqLen - ORF.location.first , geneInfo.seqLen - ORF.location.second - 2); 
+		}
+		*/
 	}
 }
 
@@ -154,18 +160,19 @@ void MED::updateATGWMAndIndex(const std::list<ORF_T>& trueORF){
 			< centerORFLength )
 			continue;
 		++indexTmp[rvsLocation.ATGIndexInORF];
-		const char* seq = rvsLocation.isPositive ? geneInfo.positiveSeq.data() 
-			: geneInfo.negtiveSeq.data() ;
+		const char* seq = rvsLocation.isPositive ? geneInfo.positiveSeq.data() : geneInfo.negtiveSeq.data() ;
 		if(	rvsLocation.location.first -preATGBP >= 0 ){
 			int iter = 0;
 			for(; iter < ATGWM.getColum(); ++iter )
 				++ATGWM( seq[rvsLocation.location.first + iter-preATGBP] - '0', iter );
 		}
-		int ATGPos = geneInfo.getNextPhaseTIS(seq, rvsLocation.location.first+3);
+		//int ATGPos = geneInfo.getNextPhaseTIS(seq, rvsLocation.location.first+2);
+		int ATGPos = geneInfo.getNextPhaseTIS(seq, rvsLocation.location.first+2);
 		if( ATGPos > rvsLocation.location.first && ATGPos-preATGBP >= 0){
 			int iter = 0;
-			for(; iter < ATGWM.getColum(); ++iter )
+			for(; iter < ATGWM.getColum(); ++iter ){
 				++ATGWMBK( seq[ATGPos + iter-preATGBP] - '0', iter );
+			}
 		}
 	}
 	ATGWM.toBeAveraged();
@@ -326,7 +333,6 @@ void MED::reEvaluateSeeds(std::list<ORF_T>& trueORF
 		Inv_S(0,1) = S(0,1)/b2ac;
 		Inv_S(1,0) = S(1,0)/b2ac;
 		Inv_S(1,1) = -S(0,0)/b2ac;
-
 		double x = 0;
 		for(  it = remain.begin(); it != remain.end(); ){
 			const char* seq = it->isPositive 

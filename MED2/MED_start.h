@@ -12,7 +12,7 @@ public: CParametersDlg()
 	{
 		m_atgPosNum = 15;
 		m_atgPreNum = 4;
-		m_ORFLen = 300;
+		m_ORFLen = 30;
 		m_sigLen = 5;
 		m_sigMutNum = 1;
 		m_sigPosNum = 2;

@@ -39,7 +39,7 @@ private:
 	Pa_I_I getNextPhaseORF( const char* seq, int hint = 0 );	
 	int getNextSTPPosition( const char* seq, int hint = 0 );	
 	Ve_Location ORFSet;
-	enum { boundOfORF = 90 };					
+	enum { boundOfORF = 87 };					
 };
 
 #endif// GENEINFO_H

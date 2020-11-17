@@ -131,7 +131,7 @@ Pa_Ve_D_M_D MED_start::signalDistriAndWM( const char* signal, int sigLen, int mu
 	int iter = 0;
 	for(; iter < distri.size(); ++iter )
 		distri[iter] = ( distri[iter] / count );
-	return std::make_pair< Ve_D, M_D >( distri, WM );
+	return std::make_pair< Ve_D, M_D >( (Ve_D) distri, (M_D) WM );
 }
 
 Ve_Location MED_start::test()
@@ -250,7 +250,7 @@ void MED_start::findHitMotifs( int mutNum )
 	for(; i < 5 && iter != sig.end(); ++iter, ++i )
 	{
 		Ve_D tmp = signalDistri( iter->second.data(), mutNum );
-		kernel[GetDerivate( tmp )] = std::make_pair<Ve_D,Str>( tmp, iter->second );
+		kernel[GetDerivate( tmp )] = std::make_pair<Ve_D,Str>( (Ve_D) tmp, (Str) iter->second );
 		int j = 1;
 
 		candidateMotifs.push_back( iter->second );

@@ -3,8 +3,10 @@
 //描叙			：将原核序列取出ORF,保存正负序列。
 
 #include "GeneInfo.h"
-#include"SequenceTransform.h"
-#include"OftenUsedOperatLib.h"
+#include "SequenceTransform.h"
+#include "OftenUsedOperatLib.h"
+#include <utility>
+using namespace std;
 
 GeneInfo_T::GeneInfo_T( const con_Str& seq1 ) 
 : positiveSeq( seq1 ), negtiveSeq( seq1 ), seqLen( seq1.size() )
@@ -95,7 +97,8 @@ Pa_I_I GeneInfo_T::getNextPhaseORF( const char* seq, int hint )
 			return std::make_pair< int, int >( -1, -1 );
 		int STP = getNextPhaseSTP( seq, TIS );
 		if( STP - TIS  - 1 >= boundOfORF )
-			return std::make_pair< int, int >( TIS, STP - 1 );
+			//return std::make_pair< int, int >( TIS, STP - 1 );
+			return std::make_pair< int, int >(int(TIS), int( STP - 1) );
 		else
 			TIS =  getNextPhaseTIS( seq, TIS + 3 );
 	}
